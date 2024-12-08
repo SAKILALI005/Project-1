@@ -1,0 +1,79 @@
+<%layout("/layouts/boilerplate")%>
+<style>
+    /* CSS for the map container */
+    #map {
+        position: fixed;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #ccc; /* Optional: border for better visibility */
+    }
+</style>
+<body>
+    <h3><%=listing.title%></h3>
+    <image src="<%=listing.image.url%>" alt="" style="height: 500px; width: 600px;">
+    <div>Owned by <i><%=listing.owner.username%></i></div>
+    <br>
+    <div class="col-6"><p> <%=listing.description%></p></div>
+    <p> &#8377 <%=listing.price.toLocaleString("en-IN")%></p>
+    <p> <%=listing.location%>, <%=listing.country%></p>
+    <%if(currUser && currUser._id.equals(listing.owner._id)){%>
+    <form method="get" action="/listings/<%=listing._id%>/edit"><button class="btn btn-dark">edit</button></form><br>
+    <form method="post" action="/listings/<%=listing._id%>?_method=DELETE"><button class="btn btn-danger">Delete list</button></form>
+    <%}%>
+</body>
+<%if(currUser){%>
+<hr>
+<div class=" mb-3">
+   
+    <h4>Leave a Review</h4>
+    <br>
+    <form action="/listings/<%=listing._id%>/review" method="post">
+        <P>Rating</P>
+        <fieldset class="starability-slot">
+            <input type="radio" id="no-rate" class="input-no-rate" name="Review[Rating]" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="Review[Rating]" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="Review[Rating]" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="Review[Rating]" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="Review[Rating]" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="Review[Rating]" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        <p>Comment</p>
+        <textarea name="Review[Comment]" rows="3" cols="25" required ></textarea><br><br>
+
+        <button class="btn btn-outline-dark">Submit</button>
+    </form>
+    
+    <%}%>
+    
+    <%if(listing.reviews && listing.reviews.length ){%>
+        <hr>
+    <h4>All Reviews</h4>
+    <div class="row">
+        <%for(let review of listing.reviews){%>
+            <div class="card col-5 ms-3 mb-3">
+                <div class="card-body">
+                    <div class="card-title"><b>@<%=review.author.username%></b></div>
+                    
+                    <p class="starability-result" data-rating="<%=review.Rating%>"></p>
+                    <div class="card-text"><h5><%=review.Comment%></h5></div>
+                    <%if(currUser && review.author.equals(currUser._id)){%>
+                        <form  method="post" action="/listings/<%=listing._id%>/review/<%=review._id%>?_method=DELETE"><button class="btn btn-dark mt-2 mb-3">delete</button> </form>
+                    <%}%>
+                </div>
+            </div>
+        <%}%>
+    </div>
+    <%}%>
+    <div class="col-6 offset-3 mb-3">
+        <div id="map" style="width: 100px; height: 100px;"></div>
+    </div>
+   
+    
+</div>
+<script src="/public/js/map.js"></script>

@@ -1,0 +1,21 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h2>Create a New list</h2>
+    <form method="post" action="/listings" enctype="multipart/form-data">
+        <input placeholder="Give the Title"  name="listing[title]" type="text" required>
+        <br><br>
+        <input placeholder="Give the Description" name="listing[description]" type="text" required>
+        <br>
+        <br>
+        <label for="listing[image]">upload image <br></label>
+        
+        <input name="listing[image]" type="file" required>
+        <br><br>
+        <input name="listing[price]" placeholder="Price" type="number" required>
+        <br><br>
+        <input name="listing[location]" placeholder="Location" type="text" required>
+        <br><br>
+        <input name="listing[country]" placeholder="Country" type="text" required>
+        <br><br><button class="btn btn-dark">Add</button>
+    </form>
+</body>

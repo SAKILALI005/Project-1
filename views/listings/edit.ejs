@@ -1,0 +1,22 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h2>Edit your list</h2>
+    <form method="post" action="/listings/<%=listing._id%>?_method=PUT" enctype="multipart/form-data">
+        <input value="<%=listing.title%>" name="listing[title]" type="text" required>
+        <br><br>
+        <input value="<%=listing.description%>" name="listing[description]" type="text" required>
+        <br><br>
+        <div class="mb-3">
+            <p>Original Image</p>
+            <img src="<%=originalImage%>"  alt="">
+        </div>
+        <input name="listing[image]" value="<%=listing.image%>" type="file" >
+        <br><br>
+        <input name="listing[price]" value="<%=listing.price%>" type="number" required>
+        <br><br>
+        <input name="listing[location]" value="<%=listing.location%>"" type="text" required>
+        <br><br>
+        <input name="listing[country]" value="<%=listing.country%>" type="text" required>
+        <br><br><button>Edit</button>
+    </form>
+</body>

@@ -1,0 +1,89 @@
+.fa-solid{
+    color: rgb(231, 11, 11);
+}
+body{
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 100% !important;
+}
+.container{
+    flex:1 !important;
+}
+.navbar{
+    height: 4rem;
+    background-color: white !important;
+}
+.navbar-expand-md{
+    background-color: white !important;
+}
+.fa-van-shuttle{
+    font-size: 1.5rem;
+}
+span{
+    font-size: 1.2rem !important;
+}
+
+.f-info-com a{
+    text-decoration: none;
+    color: black;
+}
+.f-info-com a:hover{
+    text-decoration:underline;
+    
+}
+.f-info-socials{
+    font-size: 1.2rem;
+}
+.fa-brands{
+    padding-right: 8px;
+}
+.f-info-links{
+    margin-left: 14px;
+    margin-bottom: 2px;
+}
+.f-info{
+    padding:18px 0px 18px 0px ;
+    display:flex;
+    justify-content:space-between;
+    text-align: center;
+ 
+}
+.f-info-2side{
+    padding-left: 80px;
+    padding-right: 80px;
+    border-top: 2px black;
+}
+footer{
+    background-color: #ebebeb !important;
+    border-top:solid 1px black;
+}
+.f-info-com{
+    display: flex;
+    gap: 10px; 
+   
+    color: black !important;
+    
+  }
+  .f-info-com span{
+    font-size: 1rem !important;
+  }
+  .listing-card{
+   border: none !important;
+   padding-bottom: 30px;
+   margin-bottom: 1.5rem;
+  }
+  .card-body{
+    padding: 4px !important;
+  }
+  .card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+  }
+  .card-img-overlay{
+    opacity: 0;
+  }
+  .card-img-overlay:hover{
+    opacity: 0.2;
+    background-color:white !important;
+  }
+ 
